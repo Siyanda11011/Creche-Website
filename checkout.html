@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creche - Checkout</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="logo">
+            <img src="Creche.png" alt="Creche Logo" />
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Checkout Page -->
+    <div class="checkout-page">
+        <h1>Checkout</h1>
+        <div id="cart-items"></div>
+
+        <label for="payment-method">Select a payment method:</label>
+        <select id="payment-method">
+            <option value="">--Choose Payment Method--</option>
+            <option value="credit">Credit Card</option>
+            <option value="debit">Debit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="bank">Bank Transfer</option>
+        </select>
+
+        <button id="confirm-payment-btn">Confirm Payment</button>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function displayCartItems() {
+            const cartItemsDiv = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+                return;
+            }
+
+            let total = 0;
+            let itemsHtml = "<ul>";
+            cart.forEach((item) => {
+                itemsHtml += `<li>${item.item} - R${item.price.toFixed(2)}</li>`;
+                total += item.price;
+            });
+            itemsHtml += `</ul><p><strong>Total: R${total.toFixed(2)}</strong></p>`;
+            cartItemsDiv.innerHTML = itemsHtml;
+        }
+
+        displayCartItems();
+
+        document.getElementById('confirm-payment-btn').addEventListener('click', () => {
+            const paymentMethod = document.getElementById('payment-method').value;
+            if (!paymentMethod) {
+                alert('Please select a payment method.');
+                return;
+            }
+
+            const paymentConfirmation = confirm(
+                'Payment received. Click OK to go to the home page.'
+            );
+            if (paymentConfirmation) {
+                localStorage.removeItem('cart');
+                window.location.href = 'home.html';
+            }
+        });
+    </script>
+</body>
+</html>

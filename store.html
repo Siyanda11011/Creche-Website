@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creche - Store</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="logo">
+            <img src="Creche.png" alt="Creche Logo" />
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="store-page">
+        <div class="items-grid">
+            <!-- Items for Sale -->
+            <div class="item">
+                <img src="combo.jfif" alt="Uniform Combo" />
+                <p>Uniform Combo - R1500</p>
+                <input type="checkbox" class="add-to-cart" data-item="Uniform Combo" data-price="1500" />
+            </div>
+            <div class="item">
+                <img src="beany.jpg" alt="Tracksuit" />
+                <p>Tracksuit - R430</p>
+                <input type="checkbox" class="add-to-cart" data-item="Tracksuit" data-price="430" />
+            </div>
+            <div class="item">
+                <img src="jacket.jfif" alt="Uniform 3" />
+                <p>Uniform 3 - R250</p>
+                <input type="checkbox" class="add-to-cart" data-item="Uniform 3" data-price="250" />
+            </div>
+            <div class="item">
+                <img src="winter.jpg" alt="Uniform 4" />
+                <p>Uniform 4 - R105</p>
+                <input type="checkbox" class="add-to-cart" data-item="Uniform 4" data-price="105" />
+            </div>
+            <div class="item">
+                <img src="pants.jfif" alt="Uniform 5" />
+                <p>Uniform 5 - R500</p>
+                <input type="checkbox" class="add-to-cart" data-item="Uniform 5" data-price="500" />
+            </div>
+        </div>
+
+        <button class="checkout-btn">Checkout</button>
+    </div>
+
+    <script>
+        let cart = [];
+
+        document.querySelectorAll('.add-to-cart').forEach((checkbox) => {
+            checkbox.addEventListener('change', function () {
+                const item = this.dataset.item;
+                const price = parseFloat(this.dataset.price);
+
+                if (this.checked) {
+                    cart.push({ item, price });
+                } else {
+                    cart = cart.filter((cartItem) => cartItem.item !== item);
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+            });
+        });
+
+        document.querySelector('.checkout-btn').addEventListener('click', function () {
+            window.location.href = 'checkout.html';
+        });
+    </script>
+</body>
+</html>

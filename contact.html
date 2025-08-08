@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creche - Contact</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="logo">
+            <img src="Creche.png" alt="Creche Logo" />
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contact Page Buttons -->
+    <section class="contact-section">
+        <button type="button" onclick="showPrincipal()">Principal's Contact</button>
+        <button type="button" onclick="showVicePrincipal()">Vice-Principal's Contact</button>
+        <button type="button" onclick="showHOD()">HOD's Contact</button>
+        <button type="button" onclick="showGradeR()">Grade R Teachers' Contact</button>
+        <button type="button" onclick="showGradeRR()">Grade RR Teachers' Contact</button>
+    </section>
+
+    <!-- Contact Details -->
+    <div id="contact-info" class="contact-info"></div>
+
+    <script>
+        function showPrincipal() {
+            document.getElementById('contact-info').innerHTML = `
+                <h3>Principal's Contact</h3>
+                <p>Email: principal@littlestars.com</p>
+                <p>Phone: 012-345-6789</p>
+                <p>Qualification: M.Ed in Early Childhood Education</p>
+                <p>Experience: 15 years</p>
+            `;
+        }
+
+        function showVicePrincipal() {
+            document.getElementById('contact-info').innerHTML = `
+                <h3>Vice-Principal's Contact</h3>
+                <p>Email: viceprincipal@littlestars.com</p>
+                <p>Phone: 012-345-6790</p>
+                <p>Qualification: B.Ed in Early Childhood Development</p>
+                <p>Experience: 10 years</p>
+            `;
+        }
+
+        function showHOD() {
+            document.getElementById('contact-info').innerHTML = `
+                <h3>HOD's Contact</h3>
+                <p>Email: hod@littlestars.com</p>
+                <p>Phone: 012-345-6791</p>
+                <p>Qualification: B.Ed in Early Childhood Education</p>
+                <p>Experience: 12 years</p>
+            `;
+        }
+
+        function showGradeR() {
+            document.getElementById('contact-info').innerHTML = `
+                <h3>Grade R Teachers' Contact</h3>
+                <p>Email: grader@littlestars.com</p>
+                <p>Phone: 012-345-6792</p>
+                <p>Qualification: B.Ed in Foundation Phase Education</p>
+                <p>Experience: 5 years</p>
+            `;
+        }
+
+        function showGradeRR() {
+            document.getElementById('contact-info').innerHTML = `
+                <h3>Grade RR Teachers' Contact</h3>
+                <p>Email: graderr@littlestars.com</p>
+                <p>Phone: 012-345-6793</p>
+                <p>Qualification: Diploma in Early Childhood Development</p>
+                <p>Experience: 3 years</p>
+            `;
+        }
+    </script>
+</body>
+</html>
