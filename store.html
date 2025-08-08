@@ -56,27 +56,32 @@
         <button class="checkout-btn">Checkout</button>
     </div>
 
-    <script>
-        let cart = [];
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        document.querySelectorAll('.add-to-cart').forEach((checkbox) => {
-            checkbox.addEventListener('change', function () {
-                const item = this.dataset.item;
-                const price = parseFloat(this.dataset.price);
+    document.querySelectorAll('.add-to-cart').forEach((checkbox) => {
+        const itemName = checkbox.dataset.item;
+        if (cart.some(cartItem => cartItem.item === itemName)) {
+            checkbox.checked = true;
+        }  // <-- Added missing closing brace here
 
-                if (this.checked) {
-                    cart.push({ item, price });
-                } else {
-                    cart = cart.filter((cartItem) => cartItem.item !== item);
-                }
+        checkbox.addEventListener('change', function () {
+            const item = this.dataset.item;
+            const price = parseFloat(this.dataset.price);
 
-                localStorage.setItem('cart', JSON.stringify(cart));
-            });
+            if (this.checked) {
+                cart.push({ item, price });
+            } else {
+                cart = cart.filter(cartItem => cartItem.item !== item);
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
         });
+    });
 
-        document.querySelector('.checkout-btn').addEventListener('click', function () {
-            window.location.href = 'checkout.html';
-        });
-    </script>
+    document.querySelector('.checkout-btn').addEventListener('click', function () {
+        window.location.href = 'checkout.html';
+    });
+</script>
 </body>
 </html>
+
