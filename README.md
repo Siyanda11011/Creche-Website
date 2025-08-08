@@ -52,13 +52,13 @@ The design uses a dark theme with a background image overlay for readability, cl
 ---
 ## Installation
 
-1. Clone this repository:
+1. **Clone this repository:**
 
-```bash
-git clone https://github.com/yourusername/little-stars-creche.git
+  ```bash
+  git clone https://github.com/yourusername/little-stars-creche.git
 
-2. Navigate into the project directory:
+2. **Navigate into the project directory:**
 
-cd little-stars-creche
+  cd little-stars-creche
 
-3. Open index.html in your preferred web browser.
+3. **Open index.html in your preferred web browser.****
